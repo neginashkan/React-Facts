@@ -1,14 +1,9 @@
-import { useState } from "react";
 import react_icon from "../images/react-icon.png";
 
-function Header() {
-  const [isToggled, setIsToggled] = useState(false);
-  function handleToggle(event) {
-    const { checked } = event.target;
-    checked ? setIsToggled(true) : setIsToggled(false);
-  }
+function Navbar(props) {
+  const { darkMode, handleSwitch } = props;
   return (
-    <header className="Header">
+    <nav className={`nav ${!darkMode && "light-mode"}`}>
       <div className="icon--title">
         <img className="icon" src={react_icon} alt="React Icon" title="React" />
         <h2 className="title">ReactFacts</h2>
@@ -16,28 +11,22 @@ function Header() {
       <div className=" theme--toggle--button ">
         <form>
           <input
-            onChange={handleToggle}
+            onClick={handleSwitch}
             id="switch-button"
             name="switch-button"
             type="checkbox"
             className="input-checkbox"
-            value={isToggled}
+            value={darkMode}
           />
           <label htmlFor="switch-button" className="toggle">
             toggle
           </label>
-          <span  className="light--text label-text">
-            light
-          </span>
-          <span className="dark--text label-text">
-            dark
-          </span>
+          <span className="light--text label-text">light</span>
+          <span className="dark--text label-text">dark</span>
         </form>
       </div>
-    </header>
+    </nav>
   );
 }
 
-export default Header;
-
-
+export default Navbar;

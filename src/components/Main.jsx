@@ -1,6 +1,7 @@
-function Main() {
+function Main(props) {
+  const { darkMode } = props;
   return (
-    <main className="Main">
+    <main className={`Main ${!darkMode && "light-mode"}`}>
       <h1>Fun facts about React</h1>
       <ul>
         <li>Was first released in 2013</li>
